@@ -1,7 +1,12 @@
 
 Keys: 
 
---------------------------------------------------------------
+----------------------------------------------------------------
+Free HTML Templates : 
+
+https://bootdey.com/snippets/view/ecommerce-products-with-image-description-colors-and-add-button
+
+----------------------------------------------------------------
 
 Vanilla Js (javascript) Libraries: 
 1. moment  (data & time)
@@ -56,8 +61,9 @@ Dir Structure:
 public
    index.html
 
-//npm install http-server
-//http-server -p 8080
+
+//npm install -g http-server
+//http-server -p 8080         (Run server)
 
 --------------------------------------------------------------
 
