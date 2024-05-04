@@ -1,0 +1,295 @@
+
+Keys: 
+
+-----------------------------------------------------
+
+Pug
+Ejs
+Handlebars
+
+//https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/
+
+
+
+npm init
+npm i express
+
+├──src
+  ├───views
+    ├───partials
+  app.js
+
+
+
+
+Add this Express boilerplate code into the app.js file:
+
+const express = require('express');
+const path = require('path');
+const app = express();
+app.get('/', (request, response) => {
+  return response.send('OK');
+});
+app.listen(5000, () => {
+  console.log('App is listening on port 5000');
+});
+
+
+
+
+Integrating Express template engines
+
+e.g., app.set('views', './views')
+
+app.set('view engine', 'pug')
+
+Pug:
+
+
+doctype html
+html
+    head
+        meta(name='viewport', content='width=device-width')
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        title= subject
+    body
+        div.container.mt-2
+            header
+                h2 Welcome
+                p  Here is the homepage for #{name}
+            section
+                h2 Here is the body
+                p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, repellendus!
+            footer
+                h2 Here is the footer
+                p
+                    a(href=link) Unsubscribe
+
+
+
+---------------------------------------------------------------------
+
+
+npm i pug
+
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+
+
+In the same file, create a route that renders the file this way:
+
+app.get('/index', (request, response) => {
+  response.render('index', {
+    subject: 'Pug template engine',
+    name: 'our template',
+    link: 'https://google.com'
+  });
+});
+
+
+
+Using partials in Pug
+
+nav.navbar.navbar-dark.bg-primary.navbar-expand
+    .container
+        a.navbar-brand(href='#') TMP
+        ul.navbar-nav.mr-auto
+            li.nav-item
+                a.nav-link(href='#')
+                    span Home
+            li.nav-item
+                a.nav-link(href='#')
+                    span About
+            li.nav-item
+                a.nav-link(href='#')
+                    span Menu
+            li.nav-item
+                a.nav-link(href='#')
+                    span Contact
+        span.navbar-text
+            a.nav-link(href='#')
+                span  Login
+
+
+
+
+body
+    include  partials/_nav  // partial included here
+    div.container.mt-2                
+
+
+
+------------------------------------------------------------------------
+
+EJS
+
+
+<%= name %>.
+
+EJS tags can be used in different ways:
+
+    <%= – Escape the provided value, and output it to the template
+    <%- – Output the provided value without escaping. It is advised you escape all HTML variables before rendering to prevent cross-site scripting (XSS) attacks
+    <% – Perform control operations such as using a conditional or loop
+
+
+
+First, install the ejs package from npm:
+
+npm i ejs
+
+
+Next, switch the app view engine setting from Pug to EJS:
+
+app.set('view engine', 'ejs');
+
+
+
+
+Now, to rewrite our Pug code above in EJS, create an index.ejs file in your views folder and add the following code:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <title><%= subject %></title>
+  </head>
+  <body>
+    <div class="container mt-2">
+      <header>
+        <h2>Welcome</h2>
+        <p>Here is the homepage for <%= name %></p>
+      </header>
+      <section>
+        <h2>Here is the body</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam,
+          repellendus!
+        </p>
+      </section>
+      <footer>
+        <h2>Here is the footer</h2>
+        <p><a href="<%= link %>">Unsubscribe</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+------------------------------------------------------------------------
+
+Using partials in EJS
+
+Inside the partials subfolder, create a _nav.ejs file and add this code:
+
+<nav class="navbar navbar-dark bg-primary navbar-expand">
+  <div class="container"><a class="navbar-brand" href="#">TMP</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" href="#"><span>Home</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><span>About</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><span>Menu</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><span>Contact</span></a></li>
+    </ul><span class="navbar-text"><a class="nav-link" href="#"><span> Login</span></a></span>
+  </div>
+</nav>
+
+
+<body>
+    <%- include('./partials/_nav'); %> // partial included here
+    <div class="container mt-2">
+      <header>
+
+Add the following route to the app.js file:
+
+app.get('/index', (request, response) => {
+  response.render('index', {
+    subject: 'EJS template engine',
+    name: 'our template',
+    link: 'https://google.com'
+  });
+});
+
+------------------------------------------------------------------------
+
+Handlebars:
+
+
+npm i hbs
+
+We then set our view engine to hbs with:
+
+app.set('view engine', 'hbs');
+
+
+
+An index.hbs rewrite of our previous index pages would look like this:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <title>
+        {{subject}}
+    </title>
+</head>
+<body>
+    <div class="container mt-2">
+        <header>
+            <h2>Welcome</h2>
+            <p>Here is the homepage for {{name}}
+            </p>
+        </header>
+        <section>
+            <h2>Here is the body</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam,
+                repellendus!
+            </p>
+        </section>
+        <footer>
+            <h2>Here is the footer</h2>
+            <p><a href="{{link}}">Unsubscribe</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
+
+Using partials in Handlebars:
+
+
+const hbs = require('hbs');
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
+
+<div class="container mt-2">
+    {{>_nav}}  // partial included here
+    <header>
+
+
+
+Add the following route to the app.js to render the index file:
+
+app.get('/index', (request, response) => {
+  response.render('index', {
+    subject: 'hbs template engine',
+    name: 'our template',
+    link: 'https://google.com'
+  });
+});    
+
+
+
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
