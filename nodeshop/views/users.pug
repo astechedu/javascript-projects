@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+
+    h1= title
+    //Or h1 #{title}
+    div Name: #{data.id}
+    div Email: #{data.name}
+    div Email: #{data.email}
+    div Password: #{data.password}
+
+    table.table-bordered
+        tbody
+           tr
+            th Id
+            th Name 
+            th Email
+            th Mobile
+            th Password 
+           tr
+            td #{data.id}
+            td #{data.name}
+            td #{data.email}
+            td #{data.mobile}
+            td #{data.password}
+
