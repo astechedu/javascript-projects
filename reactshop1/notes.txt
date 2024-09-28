@@ -1,1 +1,58 @@
 NOTES reactshop1
+
+Key: 
+
+
+------------------------------------------------------------------------------------
+
+src/
+|-- components/
+|   |-- Cart/
+|   |   |-- Cart.js             // Main Cart component
+|   |   |-- CartItem.js         // Component for individual cart items
+|   |   |-- CartSummary.js      // Component for summarizing cart items
+|   |-- Product/
+|   |   |-- Product.js          // Component for displaying product information
+|   |   |-- ProductList.js      // Component for listing multiple products
+|-- containers/
+|   |-- CartContainer.js        // Container component for managing Cart state
+|   |-- ProductContainer.js     // Container component for managing Product state
+|-- pages/
+|   |-- Home.js                 // Main landing page or homepage
+|   |-- CartPage.js             // Page for displaying the shopping cart
+|-- utils/
+|   |-- api.js                  // API utility functions for fetching data
+|   |-- helpers.js              // Helper functions used throughout the application
+|-- App.js                      // Main component where routing and layout is defined
+|-- index.js                    // Entry point of the application
+
+
+--------------------------------------------------------------------------------------
+
+/src
+  /components
+    /Cart
+      Cart.js
+      CartItem.js
+      CartTotal.js
+    /Product
+      Product.js
+      ProductList.js
+      ProductItem.js
+  /containers
+    App.js
+  /pages
+    HomePage.js
+    CartPage.js
+  /contexts
+    CartContext.js
+  /hooks
+    UseCart.js
+  /services
+    ProductService.js
+  /utils
+    helpers.js
+  /styles
+    globalStyles.css
+
+---------------------------------------------------------------    
