@@ -9,6 +9,8 @@ Keys
 
      pug template, for loop, ul li, var,
 
+     git commands, 
+
 ----------------------------------------------------
 
 ----------------------------------------------------
@@ -661,6 +663,14 @@ Flash Message:
 </ul>
 
 ----------------------------------------------------
+
+Git Commands:
+
+I'm guessing this folder has been checked into git before?
+
+Run git rm -r --cached <folder> and check again.
+//Remove folder after run add . command
+
 ----------------------------------------------------
 ----------------------------------------------------
 ----------------------------------------------------
