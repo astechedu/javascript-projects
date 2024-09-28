@@ -1,0 +1,55 @@
+extends layout.pug
+
+block content
+ 
+ h1 #{title}
+
+ div #{data}
+
+ a(href='//google.com') Google
+ |
+ |
+ a(class='button' href='//google.com') Google
+ |
+ |
+ a(class='button', href='//google.com') Google
+ <br>
+ input(
+  type='checkbox'
+  name='agreement'
+  checked
+)
+
+
+ <br>
+ - var classes = ['foo', 'bar', 'baz']
+ a(class=classes)
+ |
+ |
+ //- the class attribute may also be repeated to merge arrays
+
+ a.bang(class=classes class=['bing'])
+
+ <br>
+ a.button
+ <br>
+ .content
+  h1 ajay
+
+  - var values = [1,2,3];
+  ul
+    each val in values
+      li= val
+
+
+  include index.pug
+
+  ul 
+    - var i=0
+    each i in data
+      li = #{i}
+
+  <br>
+      section= s
+        - for (var i=0; i<3; i++)
+            div= data[i]

@@ -1,0 +1,29 @@
+extends layout.pug
+
+block content
+    h1 User Listing
+    a(href="/") Home
+    a(href="/register") Register    
+    table.table-bordered
+        thead
+          tr
+            th Id
+            th Name 
+            th Email
+            th Mobile
+            th Password 
+            th Actions
+        tbody
+            each user in data        
+              tr
+               td #{user.id}
+               td #{user.name}
+               td #{user.email}
+               td #{user.mobile}
+               td #{user.password}
+               td 
+                 form(action="/delete/" + user.id method="post")
+                  input.btn-input(type='submit' name='submit' value='delete' class="btn btn-md btn-danger")
+                 button.btn.btn-md.btn-info update
+                 //button.btn.btn-md.btn-info view
+                 //a(class="btn btn-md btn-danger" href="/delete/" + user.id) del
