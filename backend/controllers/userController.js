@@ -12,8 +12,8 @@ const insertUser = async (req,res) => {
         })
 
         const result = await user.save()
-       // res.send("Register has been successfull. "+result)   //For api
-        res.redirect('/')
+        res.send("Register has been successfull. "+result)   //For api
+        //res.redirect('/')    //For pug templage
         
     } catch (error) {
         res.send(error.message)
@@ -27,9 +27,9 @@ const getAllUsers = async (req,res) => {
         if(!usersData){
             return res.status(404).json({message: "User data not found"})
         }
-        //res.status(200).json(usersData)       //For api
+        res.status(200).json(usersData)       //For api
         //console.log(usersData)       
-        res.render('index', {title: "index", data: usersData})
+        //res.render('index', {title: "index", data: usersData})   //For pug template
 
     } catch (error) {        
         res.send(error.message)
@@ -63,9 +63,9 @@ const getUser = async (req,res) => {
         if(!userExist){
             return res.status(404).json({mes: "User not found"})
         }
-        //res.status(200).json(userExist) //for api
-        console.log(userExist)       
-        res.render('users', {title:"users", data: userExist})
+        res.status(200).json(userExist) //for api
+        //console.log(userExist)       
+        //res.render('users', {title:"users", data: userExist})  //For pug template
 
     } catch (error) {        
         res.send(error.message)
@@ -78,10 +78,10 @@ const deleteUser = async (req,res) => {
         const id = req.params.id
         const removeUser = await User.deleteOne({_id:id})
         if(!removeUser){
-            //res.status(200).json({message: "User not found"}) //For  api
-            res.send({message: "User not found"})
+            res.status(200).json({message: "User not found"}) //For  api            
         }
-        res.redirect('/')
+        res.status(200).json({message: "User Deleted Successfully"}) //For  api
+        //res.redirect('/')    //For pug template
     } catch (error) {
         res.send(error.message)
     }
