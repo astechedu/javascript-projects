@@ -5,6 +5,13 @@ Key:
 
 ------------------------------------------------------------------------------------
 
+Explain Folder Structures in Details:
+
+https://blog.webdevsimplified.com/2022-07/react-folder-structure/
+
+
+------------------------------------------------------------------------------------
+
 src/
 |-- components/
 |   |-- Cart/
