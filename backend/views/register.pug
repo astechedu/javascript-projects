@@ -1,0 +1,21 @@
+extends layout.pug
+block content
+  a(href="/") Home
+  div.row
+    h1 Register
+    div.col-lg-5
+      form(method='post')
+        div.form-group
+         input.home-input(type='text' name='name' value="" placeholder='Name' class="form-control m-2")
+        div.form-group
+         input.home-input(type='text' name='email' value="" placeholder='Email' class="form-control m-2")
+        div.form-group
+         input.home-input(type='text' name='mobile' value="" placeholder='Mobile' class="form-control m-2")
+        div.form-group
+         input.home-input(type='text' name='password' value="" placeholder='password' class="form-control m-2")
+         div.form-group
+         input.btn-input(type='submit' name='submit' value='Send' class="btn btn-lg btn-success m-1")
+
+      block foot
+       #footer
+        p some footer content
