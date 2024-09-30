@@ -63,3 +63,6 @@ src/
     globalStyles.css
 
 ---------------------------------------------------------------    
+
+git reset --hard <commit-hash> to return to a previous commit
+
